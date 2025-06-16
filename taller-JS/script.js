@@ -1,26 +1,31 @@
 const searchInput=document.getElementById("search");
 const container=document.getElementById("personajes-container");
+const speciesFilter=document.getElementById("species-filter");
+const speciesFilterOptions=document.getElementById("species-filter-options");
 
-
-async function fecthPersonaje(searchInput){
-    try{
-        const res = await fetch(`https://rickandmortyapi.com/api/character/${searchInput}`);
+async function fetchCharacters(searchInput){
+    try {
+        container.innerHTML = `<p>Cargando...</p>`;
+        const res = await fetch(`https://rickandmortyapi.com/api/character/?name=${searchInput}`);
         const data = await res.json();
-        console.log(data);
-        displayPersonajes(data.personajes || []);
-    }catch(err){
+        displayPersonaje(data.results || []);
+        } catch (error) {
         container.innerHTML = `<p>Error al cargar los datos.</p>`;
     }
+
 }
+
+fetchCharacters("");
+
 
 searchInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
   if (value.length >= 2) {
-    fecthPersonaje(value);
+    fetchCharacters(value);
   } else {
     container.innerHTML = "<p>Escribe al menos 2 letras para buscar.</p>";
   }
 });
 
 
-fecthPersonaje("");
+fetchCharacters("");
