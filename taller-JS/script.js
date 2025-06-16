@@ -9,7 +9,7 @@ async function fetchCharacters(searchInput){
         const res = await fetch(`https://rickandmortyapi.com/api/character/?name=${searchInput}`);
         const data = await res.json();
         console.log(data);
-        displayPersonaje(data.results || []);
+        renderCharacters(data.results || []);
         } catch (error) {
         container.innerHTML = `<p>Error al cargar los datos.</p>`;
     }
@@ -17,8 +17,8 @@ async function fetchCharacters(searchInput){
 }
 
 function renderCharacters(data) {
-
-    if (!data || !data.data) {
+    console.log("renderCharacters", data);
+    if (!data || !data.length ==0) {
         container.innerHTML = '<p>No se encontraron resultados.</p>';
         return;
     }
@@ -69,7 +69,7 @@ searchInput.addEventListener("input", (e) => {
 });
 
 
-fecthPersonaje("");
+
 
 //       const detailsDiv = personajeCard.querySelector('.meal-details');
 //       detailsDiv.appendChild(recipeBtn);
