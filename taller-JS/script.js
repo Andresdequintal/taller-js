@@ -2,6 +2,9 @@ const searchInput=document.getElementById("search");
 const container=document.getElementById("characters-container");
 const speciesFilter=document.getElementById("species-filter");
 const speciesFilterOptions=document.getElementById("species-filter-options");
+const modal = document.getElementById("modal");
+const modalBody = document.getElementById("modal-body");
+const closeButton = document.querySelector(".close");
 
 async function fetchCharacters(searchInput, speciesFilter) {
     try {
@@ -51,9 +54,39 @@ function renderCharacters(data) {
             </div>
         `;
         
+        // Añadir evento click para abrir el modal
+        characterCard.addEventListener('click', () => {
+            showModal(character);
+        });
+        
         container.appendChild(characterCard);
     });
 }
+
+function showModal(character) {
+    modalBody.innerHTML = `
+        <div class="modal-character">
+            <img src="${character.image}" alt="${character.name}" class="modal-image">
+            <h2>${character.name}</h2>
+            <p><strong>Género:</strong> ${character.gender}</p>
+            <p><strong>Origen:</strong> ${character.origin.name}</p>
+            <p><strong>Ubicación:</strong> ${character.location.name}</p>
+        </div>
+    `;
+    modal.classList.remove('hidden');
+}
+
+// Event listener para cerrar el modal
+closeButton.addEventListener('click', () => {
+    modal.classList.add('hidden');
+});
+
+// Event listener para cerrar el modal al hacer clic fuera de él
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.add('hidden');
+    }
+});
 
 // Event listener para el filtro de especies
 speciesFilter.addEventListener('change', () => {
