@@ -48,8 +48,11 @@ function renderCharacters(data) {
                 <h3> Name: ${personaje.strPersonaje}</h3>
                 <p><strong>Species:</strong> ${personaje.strCategory}</p>
                 <p><strong>Status:</strong> ${personaje.strArea}</p>
+                <div class="star">★</div>
             </div>
         `;
+
+        
         
         
  
@@ -76,3 +79,6 @@ searchInput.addEventListener("input", (e) => {
 //       detailsDiv.appendChild(recipeDiv);
 //        container.appendChild(mealCard);
 fetchCharacters("");
+
+
+
