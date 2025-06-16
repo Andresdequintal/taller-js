@@ -13,6 +13,46 @@ async function fecthPersonaje(searchInput){
     }
 }
 
+function renderCharacters(data) {
+
+    if (!data || !data.data) {
+        container.innerHTML = '<p>No se encontraron resultados.</p>';
+        return;
+    }
+  
+    data.data.forEach(data => {
+        const personajeCard = document.createElement('div');
+        personajeCard.className = 'character-card';
+        
+        const personajeDiv = document.createElement('div');
+        personajeDiv.className = 'personaje';
+        personajeDiv.style.display = 'none';
+        personajeDiv.textContent = personaje.strInstructions;
+        
+        const personajeBtn = document.createElement('button');
+        personajeBtn.textContent = 'Ver personaje';
+        personajeBtn.addEventListener('click', () => {
+            if (personajeDiv.style.display === 'none') {
+                personajeDiv.style.display = 'block';
+            } else {
+                personajeDiv.style.display = 'none';
+            }
+        });
+
+        personajeCard.innerHTML = `
+            <div class="character-container">
+                <img src="${personaje.strpersonajeThumb}" alt="${personaje.strPersonaje}">
+                <h3> Name: ${personaje.strPersonaje}</h3>
+                <p><strong>Species:</strong> ${personaje.strCategory}</p>
+                <p><strong>Status:</strong> ${personaje.strArea}</p>
+            </div>
+        `;
+        
+        
+ 
+    });
+}
+
 searchInput.addEventListener("input", (e) => {
   const value = e.target.value.trim();
   if (value.length >= 2) {
@@ -24,3 +64,8 @@ searchInput.addEventListener("input", (e) => {
 
 
 fecthPersonaje("");
+
+//       const detailsDiv = personajeCard.querySelector('.meal-details');
+//       detailsDiv.appendChild(recipeBtn);
+//       detailsDiv.appendChild(recipeDiv);
+//        container.appendChild(mealCard);
