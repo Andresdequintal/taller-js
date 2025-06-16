@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explorador Rick & Morty</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>Explorador Rick & Morty</h1>
+    <h2>[Escriban sus nombres y apellidos]</h2>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Buscar personaje..." />
+      <select id="species-filter">
+        <option value="">Todas las especies</option>
+        <option value="Human">Humano</option>
+        <option value="Alien">Alien</option>
+        <option value="Robot">Robot</option>
+        <option value="Mythological Creature">Criatura Mítica</option>
+      </select>
+    </div>
+    <div id="characters-container" class="grid"></div>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

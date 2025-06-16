@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+:root {
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --text: #212529;
+  --text-muted: #6c757d;
+  --highlight: #ffc107;
+  --highlight-off: #dee2e6;
+  --radius: 16px;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 2rem;
+}
+
+main {
+  max-width: 1240px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  color: #111;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+input, select {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  min-width: 250px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus {
+  border-color: #999;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.04);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 2rem;
+}
+
+.character-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.2rem;
+  text-align: center;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.character-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.character-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+.character-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.2rem 0;
+}
+
+.character-card p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.star {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--highlight-off);
+  transition: color 0.2s ease;
+}
+
+.star.favorited {
+  color: var(--highlight);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 480px;
+  position: relative;
+  box-shadow: var(--shadow-hover);
+  text-align: center;
+}
+
+.modal-content img {
+  max-width: 280px;
+  border-radius: var(--radius);
+  margin: 1rem auto;
+}
+
+.modal-content h2 {
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.modal-content p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.close {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-size: 1.6rem;
+  color: #999;
+  cursor: pointer;
+}
